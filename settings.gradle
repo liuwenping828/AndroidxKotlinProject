@@ -1,0 +1,1 @@
+include ':app', ':DaggerWorkmanager', ':KotlinMVP', ':CameraX', ':login', ':Cat', ':daggermultibindings', ':domain'
