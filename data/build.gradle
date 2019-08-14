@@ -1,4 +1,7 @@
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -28,11 +31,49 @@ dependencies {
 
     implementation "androidx.appcompat:appcompat:${ANDROIDX_APPCOMPAT}"
 
+    implementation project(path: ':domain')
+
+    // Dagger
+    implementation 'com.google.dagger:dagger-android:2.23.1'
+    implementation 'com.google.dagger:dagger-android-support:2.23.1'
+    kapt 'com.google.dagger:dagger-android-processor:2.22.1'
+    kapt 'com.google.dagger:dagger-compiler:2.22.1'
+
+    kapt "com.google.dagger:dagger-compiler:2.22.1"
+    compileOnly "javax.annotation:jsr250-api:1.0"
+    implementation "com.google.dagger:dagger:2.23.1"
+
+
+    kaptTest "com.google.dagger:dagger-compiler:2.22.1"
+    testCompileOnly "javax.annotation:jsr250-api:1.0"
+    testImplementation "com.google.dagger:dagger:2.23.1"
+    kaptAndroidTest "com.google.dagger:dagger-compiler:2.22.1"
+    androidTestCompileOnly "javax.annotation:jsr250-api:1.0"
+    androidTestImplementation "com.google.dagger:dagger:2.23.1"
+
+    //Rx
+    implementation "io.reactivex.rxjava2:rxjava:2.2.8"
+    implementation "io.reactivex.rxjava2:rxandroid:2.1.1"
+    implementation "io.reactivex.rxjava2:rxkotlin:2.2.0"
+    implementation "com.tbruyelle.rxpermissions2:rxpermissions:0.9.4@aar"
+
+    //Retrofit
+    api "com.squareup.retrofit2:converter-gson:2.6.0"
+    api "com.squareup.retrofit2:retrofit:2.6.0"
+    api "com.squareup.retrofit2:adapter-rxjava2:2.6.0"
+
+    //GSON
+    implementation "com.google.code.gson:gson:2.8.5"
+
+    //Test
+    testImplementation "org.mockito:mockito-inline:2.8.9"
+    testImplementation "com.nhaarman:mockito-kotlin:1.5.0"
     testImplementation "junit:junit:${JUNIT_VERSION}"
     androidTestImplementation "androidx.test:runner:${ANDROIDX_RUNNER_VERSION}"
     androidTestImplementation "androidx.test.espresso:espresso-core:${ANDROIDX_ESPRESSO_VERSION}"
 
-    implementation project(path: ':domain')
+
+
 
 
 }
