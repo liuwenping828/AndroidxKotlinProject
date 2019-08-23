@@ -19,6 +19,7 @@ android {
             initWith(buildTypes.debug)
             // Deprecated
             //            packageNameSuffix ".jnidebug"
+
             applicationIdSuffix ".jnidebug"
             jnidebugBuild true
         }
